@@ -1,0 +1,7 @@
+{
+  "name": "entrenadorestudio",
+  "private": true,
+  "version": "0.8.0",
+  "type": "module",
+  "description": "Entrenador con taller interactivo de árboles, NPI, Código P y comprobación de pila"
+}

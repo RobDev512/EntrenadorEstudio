@@ -1,0 +1,13 @@
+# Archivos temporales y copias locales
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+dist/
+*.log
+*.tmp
+*.bak
+.env
+.env.*
+!*.env.example

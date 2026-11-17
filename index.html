@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081527">
+  <meta name="description" content="Entrena Código P, NPI, triplos y cuádruplos para Lenguajes y Autómatas II.">
+  <title>EntrenadorEstudio | LyAII Unidad 2</title>
+  <link rel="stylesheet" href="css/styles.css?v=0.8.0">
+</head>
+<body>
+  <div class="aplicacion">
+    <aside class="sidebar">
+      <a class="marca" href="#inicio" aria-label="Inicio de EntrenadorEstudio">
+        <span class="marca-icono">E</span><span>Entrenador<span class="acento">Estudio</span></span>
+      </a>
+      <p class="mensaje-lateral">Aprende haciendo. Un ejercicio a la vez.</p>
+      <div class="separador"></div>
+      <p class="etiqueta-nav">MATERIAS</p>
+      <div class="item-menu seleccionado"><span class="punto"></span> Lenguajes y Autómatas II</div>
+      <div class="item-menu apagado">Programación Web <small>Próximamente</small></div>
+      <div class="tarjeta-motivacion">
+        <span class="sello-motivacion" aria-hidden="true">✦</span>
+        <strong>Tu constancia cuenta</strong>
+        <p>Dominar un procedimiento vale más que memorizar una respuesta.</p>
+      </div>
+      <div class="sidebar-final"><span class="estado-dot"></span> Funciona localmente<br><small>v0.8.0 · Sin cuenta ni internet</small></div>
+    </aside>
+    <main id="inicio" class="contenido">
+      <header class="cabecera">
+        <div>
+          <div class="miga">MATERIA / UNIDAD 2 / CÓDIGO INTERMEDIO</div>
+          <h1>Entrena para tu examen <span aria-hidden="true" class="titular-chispa">✧</span></h1>
+          <p class="descripcion">Empieza por el árbol y el postorden de NPI; después resuelve Código P, triplos y cuádruplos.</p>
+        </div>
+        <div class="estadisticas"><span>Intentos <strong id="intentos">0</strong></span><span>Correctos <strong id="aciertos">0</strong></span></div>
+      </header>
+
+      <section class="tablero-estudio" aria-label="Tu actividad de estudio">
+        <div class="tarjeta-actividad">
+          <div class="stat-icono" aria-hidden="true">✦</div>
+          <div><small>PUNTOS DE PRÁCTICA</small><strong><span id="xp">0</span> XP</strong><span id="nombre-nivel" class="stat-meta">Nivel 1 · En marcha</span></div>
+        </div>
+        <div class="tarjeta-actividad">
+          <div class="stat-icono icono-racha" aria-hidden="true">↗</div>
+          <div><small>DÍAS CONSECUTIVOS</small><strong><span id="racha">0</span> <span class="stat-unidad">días</span></strong><span class="stat-meta">Sin penalizaciones ni plazos</span></div>
+        </div>
+        <div class="tarjeta-actividad ancho">
+          <div class="progreso-superior"><small>PRECISIÓN DE PRÁCTICA</small><strong id="porcentaje">0%</strong></div>
+          <div class="barra-progreso" role="progressbar" aria-label="Porcentaje de aciertos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barra-aria"><span id="barra-relleno"></span></div>
+          <span id="mensaje-motivacion" class="stat-meta">Cada intento es información para mejorar.</span>
+        </div>
+      </section>
+
+      <section class="panel selector" aria-label="Selección de ejercicio">
+        <div class="selector-izq"><label for="tipo">Tipo de código fuente</label><select id="tipo">
+            <option value="aritmetica">Operaciones aritméticas · Básico</option>
+            <option value="ifelse">Condicional if / else · Intermedio</option>
+            <option value="while">Ciclo while · Avanzado</option>
+            <option value="for">Ciclo for · Avanzado</option>
+            <option value="dowhile">Ciclo do / while · Avanzado</option>
+          <option value="aleatorio">Aleatorio · Cualquier código fuente</option>
+        </select></div>
+        <button id="nuevo" class="boton primario boton-con-icono"><span aria-hidden="true">↻</span> Nuevo ejercicio</button>
+      </section>
+
+      <!-- Consulta del código fuente mientras se resuelve cualquier representación. -->
+      <aside class="fuente-fija" id="fuente-fija" aria-label="Código fuente siempre visible">
+        <div class="fuente-fija-cabecera">
+          <div class="fuente-fija-rotulo"><span class="fuente-fija-icono" aria-hidden="true">⌘</span><strong>CÓDIGO FUENTE · REFERENCIA</strong><span id="fuente-fija-tipo" class="fuente-fija-tipo"></span></div>
+          <button class="fuente-fija-boton" id="fuente-fija-toggle" type="button" aria-expanded="true" aria-controls="fuente-fija-detalle">Compactar <span aria-hidden="true">⌃</span></button>
+        </div>
+        <div id="fuente-fija-detalle" class="fuente-fija-detalle">
+          <pre id="fuente-fija-codigo" class="fuente-fija-codigo" tabindex="0"></pre>
+          <div class="fuente-fija-valores"><span>Valores:</span> <code id="fuente-fija-variables"></code></div>
+        </div>
+        <p class="fuente-fija-resumen" id="fuente-fija-resumen" hidden></p>
+      </aside>
+
+      <section class="panel ejercicio" id="tarjeta-ejercicio">
+        <div class="titular"><div><span class="supertitulo">EJERCICIO ACTUAL <span id="numero-ejercicio" class="contador-ejercicio"></span></span><h2 id="titulo-ejercicio">Operaciones aritméticas</h2></div><span class="chip" id="dificultad">Básico</span></div>
+        <p id="enunciado" class="enunciado"></p>
+        <pre class="expresion" id="expresion"></pre>
+        <div class="valores"><span class="valores-label">Valores iniciales</span><code id="valores"></code></div>
+        <div class="representaciones" role="tablist" aria-label="Representaciones del mismo código fuente">
+          <button type="button" class="pestana activa" role="tab" aria-selected="true" id="tab-npi" data-representacion="npi">1. NPI <span class="completada" hidden>✓</span></button>
+          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-codigoP" data-representacion="codigoP">2. Código P <span class="completada" hidden>✓</span></button>
+          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-triplos" data-representacion="triplos">3. Triplos <span class="completada" hidden>✓</span></button>
+          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-cuadruplos" data-representacion="cuadruplos">4. Cuádruplos <span class="completada" hidden>✓</span></button>
+        </div>
+        <div class="avance-fuente"><span id="texto-avance">0 de 4 representaciones completadas</span><div class="minibarra"><span id="relleno-fuente"></span></div></div>
+        <p class="contexto-representacion" id="contexto-representacion"></p>
+        <div class="editor-titulo"><label id="titulo-editor" for="respuesta">Tu árbol, recorrido y NPI</label><span id="atajo">Ctrl + Enter: validar</span></div>
+        <section id="editor-npi" class="taller-npi" hidden aria-label="Taller de árboles y notación polaca inversa">
+          <div class="npi-selector">
+            <div><strong id="npi-cantidad">Árboles del ejercicio</strong><p class="npi-resumen">Cada tarjeta representa una expresión, condición o asignación del mismo código. Selecciónala para construir su árbol, postorden y NPI.</p><select id="npi-etapa" aria-label="Selector alternativo de árbol" hidden></select></div>
+            <div class="npi-avance"><strong id="npi-progreso">0 árboles completados</strong><div class="npi-progreso-barra"><span id="npi-barra"></span></div></div>
+          </div>
+          <div id="npi-galeria" class="npi-galeria" aria-label="Todos los árboles independientes del ejercicio"></div>
+          <p id="npi-descripcion" class="npi-instruccion"></p>
+          <div class="npi-secuencia" aria-label="Secuencia recomendada"><span>1 · Árbol</span><span>2 · Postorden</span><span>3 · NPI</span></div>
+          <section class="npi-paso" id="npi-paso-arbol">
+            <h3><span class="npi-paso-numero">1</span> Construye el árbol</h3>
+            <p class="npi-leyenda">Arrastra las fichas hasta los círculos del árbol (también funciona con el dedo). El indicador ×N muestra las repeticiones. Arrastra un nodo ocupado de vuelta a su casilla del inventario para devolverlo; también puedes usar «Vaciar nodo». También puedes tocar un nodo y luego una ficha. Los operadores crean sus dos ramas. <strong>Tú decides toda la estructura.</strong></p>
+            <div class="npi-zona-arbol"><div id="npi-arbol" class="npi-arbol-visor"></div>
+              <div class="npi-controles"><strong>Nodo seleccionado:</strong><span id="npi-ruta">Raíz</span>
+                <p class="npi-etiqueta-paleta">Arrastra al árbol o devuelve aquí las fichas</p><span id="npi-inventario-estado" class="npi-inventario-estado" aria-live="polite"></span><div id="npi-paleta" class="npi-paleta"></div>
+                <div class="npi-acciones-arbol"><button type="button" class="boton silencioso" id="npi-borrar-nodo">Vaciar nodo</button><button type="button" class="boton silencioso" id="npi-reiniciar-arbol">Reiniciar árbol</button></div>
+              </div>
+            </div>
+            <div class="npi-validar-paso"><button type="button" class="boton secundario" id="npi-revisar-arbol">Comprobar árbol</button><span id="npi-mensaje-arbol" class="npi-mensaje" aria-live="polite"></span></div>
+          </section>
+          <section class="npi-paso" id="npi-paso-postorden">
+            <h3><span class="npi-paso-numero">2</span> Escribe el recorrido postorden</h3>
+            <p class="npi-leyenda">Recorre <strong>izquierda → derecha → raíz</strong>. Separa cada elemento con <strong>comas</strong>. En asignaciones incluye el destino y el signo <strong>=</strong>, pues forman parte del árbol.</p>
+            <div class="npi-campo"><input id="npi-postorden" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Ejemplo: C, a, b, +, =" disabled><button class="boton secundario" id="npi-revisar-postorden" type="button" disabled>Comprobar postorden</button></div>
+            <span id="npi-mensaje-postorden" class="npi-mensaje" aria-live="polite"></span>
+          </section>
+          <section class="npi-paso" id="npi-paso-npi">
+            <h3><span class="npi-paso-numero">3</span> Obtén la NPI</h3>
+            <p class="npi-leyenda">Escribe la NPI correspondiente. Escribe los mismos elementos del postorden pero <strong>separados por espacios</strong>, sin comas. Ejemplo: C a b + =.</p>
+            <div class="npi-campo"><input id="npi-npi" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="Escribe la NPI completa..." disabled><button class="boton secundario" id="npi-revisar-npi" type="button" disabled>Comprobar NPI</button></div>
+            <span id="npi-mensaje-npi" class="npi-mensaje" aria-live="polite"></span>
+          </section>
+          <div class="npi-pie"><span>Termina todos los árboles independientes. Después pulsa «Validar representación».</span><button type="button" class="boton secundario" id="npi-siguiente">Siguiente árbol →</button></div>
+        </section>
+        <div id="editor-texto" class="edicion-codigo">
+          <div class="codigo-con-comprobacion">
+            <div class="entrada-codigo"><textarea id="respuesta" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="LOD a&#10;LOD b&#10;ADD&#10;..." aria-describedby="consejo-editor"></textarea></div>
+            <aside class="comprobacion-pila" id="comprobacion-pila">
+              <div class="comprobacion-titulo"><strong>Comprobación · Pila</strong><span class="paso-por-paso">Paso a paso</span></div>
+              <p class="mini-explicacion">Usa los valores dados. Primero escribe el Código P y pulsa <strong>Preparar comprobación</strong>. Anota la pila después de cada instrucción, incluido <code>[]</code> cuando esté vacía. La cima está a la derecha.</p>
+              <div class="botones-pila">
+                <button type="button" id="preparar-pila" class="boton secundario">Preparar comprobación</button>
+                <button type="button" id="verificar-pila" class="boton secundario" disabled>Revisar mis estados</button>
+                <button type="button" id="revelar-pila" class="boton silencioso" disabled>Revelar pila</button>
+              </div>
+              <div id="estado-pila" class="mini-mensaje" aria-live="polite">La comprobación se llenará con las instrucciones que se ejecuten.</div>
+              <div class="tabla-desplazable tabla-pila"><table><thead><tr><th>#</th><th>Instrucción ejecutada</th><th>Mi pila</th><th>Revisión</th></tr></thead><tbody id="filas-pila"></tbody></table></div>
+            </aside>
+          </div>
+        </div>
+        <div id="editor-tabla" class="editor-tabla" hidden>
+          <div class="tabla-desplazable tabla-edicion"><table id="tabla-entrada"><thead><tr id="tabla-encabezado"></tr></thead><tbody id="tabla-cuerpo"></tbody></table></div>
+          <div class="fila-tabla-acciones"><button id="agregar-fila" class="boton secundario" type="button">+ Agregar fila</button><span>Las filas se numeran automáticamente desde 0.</span></div>
+        </div>
+        <p id="consejo-editor" class="ayuda-editor">Se aceptan <code>LABEL Inicio</code> y <code>Inicio:</code>. JT salta si la condición es verdadera.</p>
+        <div class="botones"><button id="validar" class="boton primario">✓ Validar representación</button><button id="pista" class="boton secundario">Pista</button><button id="solucion" class="boton secundario">Ver solución</button><button id="limpiar" class="boton silencioso">Limpiar</button></div>
+        <div id="feedback" class="feedback" hidden role="status" aria-live="polite"><strong id="feedback-titulo"></strong><p id="feedback-detalle"></p></div>
+        <div id="pista-panel" class="nota" hidden><strong>Pista <span id="pista-numero"></span></strong><p id="pista-texto"></p></div>
+        <div id="solucion-panel" class="solucion" hidden><div class="panel-titulo"><strong>Solución de referencia</strong><button id="usar-solucion" class="enlace">Colocar en el editor</button></div><pre id="codigo-solucion"></pre><p class="pie-solucion">Puedes encontrar otra solución equivalente. Mostrar la solución reduce los XP de este ejercicio.</p></div>
+        
+      </section>
+
+      <section class="panel progreso"><div><h2>Tu progreso local</h2><p class="descripcion">Tus intentos se guardan en este navegador. Haz un respaldo antes de cambiar de equipo.</p></div><div class="botones"><button id="exportar" class="boton secundario">Exportar JSON</button><label class="boton secundario etiqueta-importar" for="importar">Importar JSON</label><input type="file" id="importar" accept=".json,application/json" hidden></div><p id="mensaje-progreso" class="mini-mensaje" aria-live="polite"></p></section>
+      <footer>EntrenadorEstudio v0.8.0 · LyAII U2 · Un código fuente, cuatro formas de resolverlo.</footer>
+    </main>
+  </div>
+  <div id="celebracion" class="capa-celebracion" aria-hidden="true"></div>
+  <script type="module" src="js/app.js?v=0.8.0"></script>
+</body>
+</html>
