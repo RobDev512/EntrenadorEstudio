@@ -1,4 +1,4 @@
-ENTRENADORESTUDIO v0.9.0 — Lenguajes y Autómatas II / Unidad 2
+ENTRENADORESTUDIO v0.9.1 — Lenguajes y Autómatas II / Unidad 2
 ==================================================================
 
 USO EN WINDOWS
@@ -7,7 +7,7 @@ USO EN WINDOWS
 3. Abre http://127.0.0.1:8765/ y usa Ctrl + Shift + R si ves una versión anterior.
 4. Como alternativa, puedes abrir index.html con Live Server en VS Code.
 
-NOVEDADES v0.9.0
+NOVEDADES v0.9.1
 - Avance obligatorio en orden: NPI > Código P > Triplos > Cuádruplos.
 - La siguiente etapa se desbloquea cuando la anterior se valida correctamente.
 - En Triplos/Cuádruplos, tu Código P aprobado acompaña al código fuente fijo.
@@ -19,3 +19,5 @@ IMPORTANTE
 - Los saltos se comprueban en Código P, triplos y cuádruplos.
 - El progreso se guarda por navegador, no se sincroniza entre equipos.
 - Consulta README.md para instrucciones completas y límites del simulador.
+
+NUEVO v0.9.1: En Cuadruplos, la referencia fija muestra tus Triplos aprobados junto al codigo fuente. Logo propio en la barra lateral y favicon de la pestaña.

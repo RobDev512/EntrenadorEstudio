@@ -6,13 +6,16 @@
   <meta name="theme-color" content="#081527">
   <meta name="description" content="Entrena Código P, NPI, triplos y cuádruplos para Lenguajes y Autómatas II.">
   <title>EntrenadorEstudio | LyAII Unidad 2</title>
-  <link rel="stylesheet" href="css/styles.css?v=0.9.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=0.9.1">
+  <link rel="shortcut icon" href="assets/favicon.ico?v=0.9.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=0.9.1">
+  <link rel="stylesheet" href="css/styles.css?v=0.9.1">
 </head>
 <body>
   <div class="aplicacion">
     <aside class="sidebar">
       <a class="marca" href="#inicio" aria-label="Inicio de EntrenadorEstudio">
-        <span class="marca-icono">E</span><span>Entrenador<span class="acento">Estudio</span></span>
+        <span class="marca-icono"><img src="assets/logo-entrenadorestudio.png" alt="" width="42" height="42"></span><span>Entrenador<span class="acento">Estudio</span></span>
       </a>
       <p class="mensaje-lateral">Aprende haciendo. Un ejercicio a la vez.</p>
       <div class="separador"></div>
@@ -24,7 +27,7 @@
         <strong>Tu constancia cuenta</strong>
         <p>Dominar un procedimiento vale más que memorizar una respuesta.</p>
       </div>
-      <div class="sidebar-final"><span class="estado-dot"></span> Funciona localmente<br><small>v0.9.0 · Sin cuenta ni internet</small></div>
+      <div class="sidebar-final"><span class="estado-dot"></span> Funciona localmente<br><small>v0.9.1 · Sin cuenta ni internet</small></div>
     </aside>
     <main id="inicio" class="contenido">
       <header class="cabecera">
@@ -79,6 +82,10 @@
           <section id="fuente-fija-codigo-p" class="fuente-fija-referencia-p" aria-label="Tu Código P validado" hidden>
             <span class="fuente-fija-subtitulo">CÓDIGO P · TU SOLUCIÓN VALIDADA</span>
             <pre id="fuente-fija-p-contenido" class="fuente-fija-codigo" tabindex="0"></pre>
+          </section>
+          <section id="fuente-fija-triplos" class="fuente-fija-referencia-triplos" aria-label="Tus triplos validados" hidden>
+            <span class="fuente-fija-subtitulo">TRIPLOS · TU SOLUCIÓN VALIDADA</span>
+            <pre id="fuente-fija-triplos-contenido" class="fuente-fija-codigo" tabindex="0"></pre>
           </section>
         </div>
         <p class="fuente-fija-resumen" id="fuente-fija-resumen" hidden></p>
@@ -163,10 +170,10 @@
       </section>
 
       <section class="panel progreso"><div><h2>Tu progreso local</h2><p class="descripcion">Tus intentos se guardan en este navegador. Haz un respaldo antes de cambiar de equipo.</p></div><div class="botones"><button id="exportar" class="boton secundario">Exportar JSON</button><label class="boton secundario etiqueta-importar" for="importar">Importar JSON</label><input type="file" id="importar" accept=".json,application/json" hidden></div><p id="mensaje-progreso" class="mini-mensaje" aria-live="polite"></p></section>
-      <footer>EntrenadorEstudio v0.9.0 · LyAII U2 · Un código fuente, cuatro formas de resolverlo.</footer>
+      <footer>EntrenadorEstudio v0.9.1 · LyAII U2 · Un código fuente, cuatro formas de resolverlo.</footer>
     </main>
   </div>
   <div id="celebracion" class="capa-celebracion" aria-hidden="true"></div>
-  <script type="module" src="js/app.js?v=0.9.0"></script>
+  <script type="module" src="js/app.js?v=0.9.1"></script>
 </body>
 </html>

@@ -216,3 +216,17 @@ body { background: radial-gradient(ellipse at 75% 0%, #102b45 0%, transparent 42
  .fuente-fija-codigo{font-size:10px}
  .fuente-fija-referencia-p .fuente-fija-codigo{max-height:117px}
 }
+
+/* v0.9.1 · Marca e identidad */
+.marca-icono{display:block;flex:0 0 42px;width:42px;height:42px;background:none;border-radius:0;box-shadow:none}
+.marca-icono img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 8px rgba(23,204,229,.28))}
+.marca:hover .marca-icono{box-shadow:none;transform:translateY(-2px) scale(1.04)}
+/* Referencias progresivas: un único ejercicio, la solución anterior validada */
+.fuente-fija-detalle.con-triplos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fuente-fija-referencia-triplos{min-width:0;border-left:1px solid #2c5d76;padding-left:12px}
+.fuente-fija-referencia-triplos .fuente-fija-codigo{color:#ffd793;max-height:150px;overflow:auto}
+@media(max-width:740px){
+  .fuente-fija-detalle.con-triplos{gap:8px}
+  .fuente-fija-referencia-triplos{padding-left:8px}
+  .fuente-fija-referencia-triplos .fuente-fija-codigo{max-height:117px}
+}

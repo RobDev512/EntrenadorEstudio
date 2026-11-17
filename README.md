@@ -30,13 +30,13 @@ HTML5, CSS3, JavaScript (módulos ES) y almacenamiento local. **Sin React, sin b
 
 ## Versión
 
-**v0.9.0** — Avance secuencial de NPI a Código P, triplos y cuádruplos; botones de continuación y referencia fija al Código P que validó el estudiante. Conserva el taller de árboles, postorden con comas y la comprobación de pila.
+**v0.9.1** — Flujo secuencial de las cuatro representaciones, referencia del Código P aprobado al resolver triplos y de los triplos aprobados al resolver cuádruplos; logotipo e iconos propios. Conserva el taller de árboles, postorden con comas y la comprobación de pila.
 
 ## Ruta de práctica
 
 Para cada código fuente, las representaciones se desbloquean en orden: **NPI → Código P → Triplos → Cuádruplos**. La siguiente etapa solo se abre después de validar la anterior. El botón **Continuar**, al final de cada ejercicio, avanza sin subir de nuevo.
 
-Durante triplos y cuádruplos, la referencia fija muestra tanto el código fuente como **tu Código P aprobado** (no una solución alternativa), útil para trasladar las operaciones y los saltos a las tablas.
+En **Triplos**, la referencia fija muestra el código fuente junto con **tu Código P aprobado**. En **Cuádruplos**, muestra el código fuente junto con **tus triplos aprobados**. Siempre se utiliza tu respuesta validada, no una solución alternativa.
 
 ## Aviso académico
 

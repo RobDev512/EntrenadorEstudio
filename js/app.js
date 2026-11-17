@@ -18,6 +18,7 @@ let borradores = {}, resultadosPorTab = {}, ayudasPorTab = {};
 let trazaActiva = null, codigoTraza = '';
 // Instantánea del Código P realmente aprobado; no se sustituye por la solución de referencia.
 let codigoPAprobado = '';
+let triplosAprobados = '';
 
 function progresoGlobal() {
     const info = estadisticas();
@@ -37,12 +38,18 @@ function etapaDesbloqueada(id) {
     const posicion = ORDEN_ETAPAS.indexOf(id);
     return posicion === 0 || (posicion > 0 && resultadosPorTab[ORDEN_ETAPAS[posicion - 1]]?.correcto === true);
 }
-function actualizarReferenciaCodigoP() {
-    const mostrar = Boolean(codigoPAprobado) && ['triplos', 'cuadruplos'].includes(representacion);
-    $('fuente-fija-codigo-p').hidden = !mostrar;
-    $('fuente-fija-detalle').classList.toggle('con-codigo-p', mostrar);
-    $('fuente-fija-p-contenido').textContent = mostrar ? codigoPAprobado : '';
-    // El botón de compactar continúa funcionando con los dos códigos.
+function actualizarReferencias() {
+    // Cada representación toma como guía la respuesta REAL aprobada inmediatamente antes:
+    // triplos consulta Código P; cuádruplos consulta los triplos del estudiante.
+    const mostrarCodigoP = representacion === 'triplos' && Boolean(codigoPAprobado);
+    const mostrarTriplos = representacion === 'cuadruplos' && Boolean(triplosAprobados);
+    $('fuente-fija-codigo-p').hidden = !mostrarCodigoP;
+    $('fuente-fija-triplos').hidden = !mostrarTriplos;
+    $('fuente-fija-detalle').classList.toggle('con-codigo-p', mostrarCodigoP);
+    $('fuente-fija-detalle').classList.toggle('con-triplos', mostrarTriplos);
+    $('fuente-fija-p-contenido').textContent = mostrarCodigoP ? codigoPAprobado : '';
+    $('fuente-fija-triplos-contenido').textContent = mostrarTriplos ? triplosAprobados : '';
+    // El código fuente permanece fijo y la referencia se puede compactar.
 }
 function actualizarContinuar() {
     const pos = ORDEN_ETAPAS.indexOf(representacion);
@@ -176,14 +183,15 @@ function cambiarRepresentacion(id, guardar = true) {
         ? 'Un árbol independiente por expresión o condición del programa. Todos aparecen en tarjetas; selecciona cuál editar. NPI aquí no representa los saltos de control.'
         : id === 'npi' ? 'El árbol de una asignación incluye destino y =. Su postorden se escribe con comas; la NPI es la misma secuencia, separada por espacios.'
         : id === 'codigoP' ? 'Escribe las instrucciones y practica a su derecha los estados de la pila con los valores proporcionados.'
-        : 'Trabajas sobre el MISMO código fuente. El Código P que validaste permanece junto al código fuente para ayudarte con las tablas.';
+        : id === 'triplos' ? 'Trabajas sobre el MISMO código fuente. Tu Código P aprobado permanece visible como referencia.'
+        : 'Trabajas sobre el MISMO código fuente. Tus triplos aprobados permanecen visibles para preparar los cuádruplos.';
     if (id === 'npi') tallerNPI.mostrar();
     else if (esTabla()) prepararTabla(borradores[id] || '');
     else $('respuesta').value = borradores[id] || '';
     reiniciarPaneles();
     const previo = resultadosPorTab[id];
     if (previo) feedback(previo.correcto, previo.titulo, previo.detalle);
-    actualizarReferenciaCodigoP();
+    actualizarReferencias();
     actualizarContinuar();
     return true;
 }
@@ -204,7 +212,7 @@ function cargarEjercicio() {
     $('fuente-fija-codigo').textContent = fuente.expresion;
     $('fuente-fija-variables').textContent = $('valores').textContent;
     $('fuente-fija-resumen').textContent = `${fuente.expresion.replace(/\s+/g, ' ').trim()}   ·   ${$('valores').textContent}`;
-    borradores = {}; resultadosPorTab = {}; ayudasPorTab = {}; trazaActiva = null; codigoTraza = ''; codigoPAprobado = '';
+    borradores = {}; resultadosPorTab = {}; ayudasPorTab = {}; trazaActiva = null; codigoTraza = ''; codigoPAprobado = ''; triplosAprobados = '';
     $('filas-pila').replaceChildren(); $('estado-pila').textContent = 'Pulsa «Preparar comprobación» cuando tengas tu Código P.';
     $('verificar-pila').disabled = true; $('revelar-pila').disabled = true;
     tallerNPI.cargar(paquete.versiones.npi.etapas);
@@ -243,6 +251,7 @@ function validar() {
     progresoGlobal(); progresoPaquete();
     if (resultado.correcto) {
         if (representacion === 'codigoP') codigoPAprobado = respuesta;
+        if (representacion === 'triplos') triplosAprobados = respuesta;
         celebrar();
     }
 }
