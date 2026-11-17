@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#081527">
   <meta name="description" content="Entrena Código P, NPI, triplos y cuádruplos para Lenguajes y Autómatas II.">
   <title>EntrenadorEstudio | LyAII Unidad 2</title>
-  <link rel="stylesheet" href="css/styles.css?v=0.8.0">
+  <link rel="stylesheet" href="css/styles.css?v=0.9.0">
 </head>
 <body>
   <div class="aplicacion">
@@ -24,7 +24,7 @@
         <strong>Tu constancia cuenta</strong>
         <p>Dominar un procedimiento vale más que memorizar una respuesta.</p>
       </div>
-      <div class="sidebar-final"><span class="estado-dot"></span> Funciona localmente<br><small>v0.8.0 · Sin cuenta ni internet</small></div>
+      <div class="sidebar-final"><span class="estado-dot"></span> Funciona localmente<br><small>v0.9.0 · Sin cuenta ni internet</small></div>
     </aside>
     <main id="inicio" class="contenido">
       <header class="cabecera">
@@ -71,8 +71,15 @@
           <button class="fuente-fija-boton" id="fuente-fija-toggle" type="button" aria-expanded="true" aria-controls="fuente-fija-detalle">Compactar <span aria-hidden="true">⌃</span></button>
         </div>
         <div id="fuente-fija-detalle" class="fuente-fija-detalle">
-          <pre id="fuente-fija-codigo" class="fuente-fija-codigo" tabindex="0"></pre>
-          <div class="fuente-fija-valores"><span>Valores:</span> <code id="fuente-fija-variables"></code></div>
+          <div class="fuente-fija-origen">
+            <span class="fuente-fija-subtitulo">CÓDIGO FUENTE</span>
+            <pre id="fuente-fija-codigo" class="fuente-fija-codigo" tabindex="0"></pre>
+            <div class="fuente-fija-valores"><span>Valores:</span> <code id="fuente-fija-variables"></code></div>
+          </div>
+          <section id="fuente-fija-codigo-p" class="fuente-fija-referencia-p" aria-label="Tu Código P validado" hidden>
+            <span class="fuente-fija-subtitulo">CÓDIGO P · TU SOLUCIÓN VALIDADA</span>
+            <pre id="fuente-fija-p-contenido" class="fuente-fija-codigo" tabindex="0"></pre>
+          </section>
         </div>
         <p class="fuente-fija-resumen" id="fuente-fija-resumen" hidden></p>
       </aside>
@@ -84,9 +91,9 @@
         <div class="valores"><span class="valores-label">Valores iniciales</span><code id="valores"></code></div>
         <div class="representaciones" role="tablist" aria-label="Representaciones del mismo código fuente">
           <button type="button" class="pestana activa" role="tab" aria-selected="true" id="tab-npi" data-representacion="npi">1. NPI <span class="completada" hidden>✓</span></button>
-          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-codigoP" data-representacion="codigoP">2. Código P <span class="completada" hidden>✓</span></button>
-          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-triplos" data-representacion="triplos">3. Triplos <span class="completada" hidden>✓</span></button>
-          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-cuadruplos" data-representacion="cuadruplos">4. Cuádruplos <span class="completada" hidden>✓</span></button>
+          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-codigoP" data-representacion="codigoP" disabled title="Completa la representación anterior para desbloquear"><span class="candado" aria-hidden="true">🔒</span> 2. Código P <span class="completada" hidden>✓</span></button>
+          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-triplos" data-representacion="triplos" disabled title="Completa la representación anterior para desbloquear"><span class="candado" aria-hidden="true">🔒</span> 3. Triplos <span class="completada" hidden>✓</span></button>
+          <button type="button" class="pestana" role="tab" aria-selected="false" id="tab-cuadruplos" data-representacion="cuadruplos" disabled title="Completa la representación anterior para desbloquear"><span class="candado" aria-hidden="true">🔒</span> 4. Cuádruplos <span class="completada" hidden>✓</span></button>
         </div>
         <div class="avance-fuente"><span id="texto-avance">0 de 4 representaciones completadas</span><div class="minibarra"><span id="relleno-fuente"></span></div></div>
         <p class="contexto-representacion" id="contexto-representacion"></p>
@@ -149,14 +156,17 @@
         <div id="feedback" class="feedback" hidden role="status" aria-live="polite"><strong id="feedback-titulo"></strong><p id="feedback-detalle"></p></div>
         <div id="pista-panel" class="nota" hidden><strong>Pista <span id="pista-numero"></span></strong><p id="pista-texto"></p></div>
         <div id="solucion-panel" class="solucion" hidden><div class="panel-titulo"><strong>Solución de referencia</strong><button id="usar-solucion" class="enlace">Colocar en el editor</button></div><pre id="codigo-solucion"></pre><p class="pie-solucion">Puedes encontrar otra solución equivalente. Mostrar la solución reduce los XP de este ejercicio.</p></div>
-        
+        <div class="continuar-area" aria-label="Avanzar en el ejercicio">
+          <div class="continuar-explicacion" id="continuar-ayuda" aria-live="polite">Completa la NPI para desbloquear Código P.</div>
+          <button id="continuar" type="button" class="boton primario continuar-boton" disabled>Continuar a Código P →</button>
+        </div>
       </section>
 
       <section class="panel progreso"><div><h2>Tu progreso local</h2><p class="descripcion">Tus intentos se guardan en este navegador. Haz un respaldo antes de cambiar de equipo.</p></div><div class="botones"><button id="exportar" class="boton secundario">Exportar JSON</button><label class="boton secundario etiqueta-importar" for="importar">Importar JSON</label><input type="file" id="importar" accept=".json,application/json" hidden></div><p id="mensaje-progreso" class="mini-mensaje" aria-live="polite"></p></section>
-      <footer>EntrenadorEstudio v0.8.0 · LyAII U2 · Un código fuente, cuatro formas de resolverlo.</footer>
+      <footer>EntrenadorEstudio v0.9.0 · LyAII U2 · Un código fuente, cuatro formas de resolverlo.</footer>
     </main>
   </div>
   <div id="celebracion" class="capa-celebracion" aria-hidden="true"></div>
-  <script type="module" src="js/app.js?v=0.8.0"></script>
+  <script type="module" src="js/app.js?v=0.9.0"></script>
 </body>
 </html>

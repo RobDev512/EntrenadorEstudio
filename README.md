@@ -14,7 +14,7 @@ Aplicación web gratuita de práctica para estudiantes de **Lenguajes y Autómat
 
 ## Cómo usarlo
 
-**Opción 1 — En línea:** después de activar GitHub Pages, abre el enlace del sitio publicado desde la sección *Settings → Pages* de este repositorio. No necesitas instalar nada.
+**Opción 1 — En línea:** abre [EntrenadorEstudio en GitHub Pages](https://robdev512.github.io/EntrenadorEstudio/). No necesitas instalar nada.
 
 **Opción 2 — En Windows:** descarga el repositorio, extrae la carpeta y ejecuta `INICIAR.bat`. Requiere Python 3 instalado para iniciar un servidor HTTP local. Como alternativa, abre `index.html` con la extensión Live Server de VS Code.
 
@@ -30,7 +30,13 @@ HTML5, CSS3, JavaScript (módulos ES) y almacenamiento local. **Sin React, sin b
 
 ## Versión
 
-**v0.8.0** — Taller de árboles con fichas arrastrables y reversibles, postorden con comas y cuatro representaciones de código intermedio.
+**v0.9.0** — Avance secuencial de NPI a Código P, triplos y cuádruplos; botones de continuación y referencia fija al Código P que validó el estudiante. Conserva el taller de árboles, postorden con comas y la comprobación de pila.
+
+## Ruta de práctica
+
+Para cada código fuente, las representaciones se desbloquean en orden: **NPI → Código P → Triplos → Cuádruplos**. La siguiente etapa solo se abre después de validar la anterior. El botón **Continuar**, al final de cada ejercicio, avanza sin subir de nuevo.
+
+Durante triplos y cuádruplos, la referencia fija muestra tanto el código fuente como **tu Código P aprobado** (no una solución alternativa), útil para trasladar las operaciones y los saltos a las tablas.
 
 ## Aviso académico
 

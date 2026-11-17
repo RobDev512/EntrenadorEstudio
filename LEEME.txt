@@ -1,4 +1,4 @@
-ENTRENADORESTUDIO v0.8.0 — Lenguajes y Autómatas II / Unidad 2
+ENTRENADORESTUDIO v0.9.0 — Lenguajes y Autómatas II / Unidad 2
 ==================================================================
 
 USO EN WINDOWS
@@ -7,12 +7,12 @@ USO EN WINDOWS
 3. Abre http://127.0.0.1:8765/ y usa Ctrl + Shift + R si ves una versión anterior.
 4. Como alternativa, puedes abrir index.html con Live Server en VS Code.
 
-NOVEDADES v0.8.0
-- Fichas de árboles arrastrables desde y hacia la paleta, con contador.
-- Los árboles de asignación incluyen = como raíz y la variable destino.
-- El postorden usa comas, por ejemplo: C, a, b, +, =
-- La NPI usa espacios, por ejemplo: C a b + =
-- Se conservan NPI, Código P, triplos, cuádruplos, animaciones y progreso local.
+NOVEDADES v0.9.0
+- Avance obligatorio en orden: NPI > Código P > Triplos > Cuádruplos.
+- La siguiente etapa se desbloquea cuando la anterior se valida correctamente.
+- En Triplos/Cuádruplos, tu Código P aprobado acompaña al código fuente fijo.
+- Botón Continuar al final de cada sección, y Nuevo ejercicio al completar todo.
+- Se conservan árboles, arrastre de fichas, postorden con comas, pila y progreso local.
 
 IMPORTANTE
 - En if/else, while, for y do/while, NPI se practica por árbol de condición o asignación.

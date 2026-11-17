@@ -8,12 +8,16 @@ import { TallerNPI, referenciaCompletaNPI } from './npi-taller.js';
 
 const $ = id => document.getElementById(id);
 const botonesTabs = [...document.querySelectorAll('[data-representacion]')];
+const ORDEN_ETAPAS = REPRESENTACIONES.map(item => item.id);
+const NOMBRES_ETAPAS = Object.fromEntries(REPRESENTACIONES.map(item => [item.id, item.nombre]));
 let paquete = null, ejercicio = null, representacion = 'npi';
 const tallerNPI = new TallerNPI();
 let pistasMostradas = 0, solucionVista = false;
 let ejerciciosAbiertos = 0;
 let borradores = {}, resultadosPorTab = {}, ayudasPorTab = {};
 let trazaActiva = null, codigoTraza = '';
+// Instantánea del Código P realmente aprobado; no se sustituye por la solución de referencia.
+let codigoPAprobado = '';
 
 function progresoGlobal() {
     const info = estadisticas();
@@ -29,13 +33,46 @@ function progresoGlobal() {
         info.porcentaje < 40 ? 'Revisa tus errores: ahí está la mejora.' :
         info.porcentaje < 80 ? 'Vas desarrollando consistencia.' : 'Buen dominio: prueba las cuatro representaciones.';
 }
+function etapaDesbloqueada(id) {
+    const posicion = ORDEN_ETAPAS.indexOf(id);
+    return posicion === 0 || (posicion > 0 && resultadosPorTab[ORDEN_ETAPAS[posicion - 1]]?.correcto === true);
+}
+function actualizarReferenciaCodigoP() {
+    const mostrar = Boolean(codigoPAprobado) && ['triplos', 'cuadruplos'].includes(representacion);
+    $('fuente-fija-codigo-p').hidden = !mostrar;
+    $('fuente-fija-detalle').classList.toggle('con-codigo-p', mostrar);
+    $('fuente-fija-p-contenido').textContent = mostrar ? codigoPAprobado : '';
+    // El botón de compactar continúa funcionando con los dos códigos.
+}
+function actualizarContinuar() {
+    const pos = ORDEN_ETAPAS.indexOf(representacion);
+    const aprobado = resultadosPorTab[representacion]?.correcto === true;
+    const ultimo = pos === ORDEN_ETAPAS.length - 1;
+    const siguiente = ORDEN_ETAPAS[pos + 1];
+    const boton = $('continuar');
+    boton.disabled = !aprobado;
+    boton.textContent = ultimo ? 'Terminar y crear otro ejercicio →' : `Continuar a ${NOMBRES_ETAPAS[siguiente]} →`;
+    $('continuar-ayuda').textContent = aprobado
+        ? (ultimo ? '¡Completaste las cuatro representaciones! Puedes comenzar otro ejercicio.' : `${NOMBRES_ETAPAS[siguiente]} ya está desbloqueado. Avanza sin volver a subir.`)
+        : (ultimo ? 'Valida correctamente los cuádruplos para terminar.' : `Valida ${NOMBRES_ETAPAS[representacion]} para desbloquear ${NOMBRES_ETAPAS[siguiente]}.`);
+}
 function progresoPaquete() {
     const completadas = REPRESENTACIONES.filter(rep => resultadosPorTab[rep.id]?.correcto).length;
     $('texto-avance').textContent = `${completadas} de 4 representaciones completadas`;
     $('relleno-fuente').style.width = `${completadas * 25}%`;
     botonesTabs.forEach(boton => {
-        boton.querySelector('.completada').hidden = !resultadosPorTab[boton.dataset.representacion]?.correcto;
+        const id = boton.dataset.representacion;
+        const aprobada = resultadosPorTab[id]?.correcto === true;
+        const bloqueada = !etapaDesbloqueada(id);
+        boton.disabled = bloqueada;
+        boton.classList.toggle('bloqueada', bloqueada);
+        boton.querySelector('.completada').hidden = !aprobada;
+        boton.querySelector('.candado')?.toggleAttribute('hidden', !bloqueada);
+        const previo = ORDEN_ETAPAS[ORDEN_ETAPAS.indexOf(id) - 1];
+        boton.title = bloqueada ? `Primero completa ${NOMBRES_ETAPAS[previo]}` : (aprobada ? 'Representación aprobada' : 'Lista para resolver');
+        boton.setAttribute('aria-label', `${NOMBRES_ETAPAS[id]}${bloqueada ? `, bloqueada hasta completar ${NOMBRES_ETAPAS[previo]}` : aprobada ? ', aprobada' : ', disponible'}`);
     });
+    actualizarContinuar();
 }
 function feedback(correcto, titulo, detalle) {
     const contenedor = $('feedback');
@@ -110,6 +147,7 @@ function reiniciarPaneles() {
     $('solucion').textContent = 'Ver solución';
 }
 function cambiarRepresentacion(id, guardar = true) {
+    if (!paquete || !etapaDesbloqueada(id)) return false;
     if (guardar) guardarBorrador();
     representacion = id; ejercicio = paquete.versiones[id];
     const ayuda = ayudasPorTab[id] ?? { pistasMostradas: 0, solucionVista: false };
@@ -138,13 +176,16 @@ function cambiarRepresentacion(id, guardar = true) {
         ? 'Un árbol independiente por expresión o condición del programa. Todos aparecen en tarjetas; selecciona cuál editar. NPI aquí no representa los saltos de control.'
         : id === 'npi' ? 'El árbol de una asignación incluye destino y =. Su postorden se escribe con comas; la NPI es la misma secuencia, separada por espacios.'
         : id === 'codigoP' ? 'Escribe las instrucciones y practica a su derecha los estados de la pila con los valores proporcionados.'
-        : 'Trabajas sobre el MISMO código fuente. Las demás pestañas conservan lo que ya escribiste.';
+        : 'Trabajas sobre el MISMO código fuente. El Código P que validaste permanece junto al código fuente para ayudarte con las tablas.';
     if (id === 'npi') tallerNPI.mostrar();
     else if (esTabla()) prepararTabla(borradores[id] || '');
     else $('respuesta').value = borradores[id] || '';
     reiniciarPaneles();
     const previo = resultadosPorTab[id];
     if (previo) feedback(previo.correcto, previo.titulo, previo.detalle);
+    actualizarReferenciaCodigoP();
+    actualizarContinuar();
+    return true;
 }
 function cargarEjercicio() {
     const tipo = $('tipo').value;
@@ -163,7 +204,7 @@ function cargarEjercicio() {
     $('fuente-fija-codigo').textContent = fuente.expresion;
     $('fuente-fija-variables').textContent = $('valores').textContent;
     $('fuente-fija-resumen').textContent = `${fuente.expresion.replace(/\s+/g, ' ').trim()}   ·   ${$('valores').textContent}`;
-    borradores = {}; resultadosPorTab = {}; ayudasPorTab = {}; trazaActiva = null; codigoTraza = '';
+    borradores = {}; resultadosPorTab = {}; ayudasPorTab = {}; trazaActiva = null; codigoTraza = ''; codigoPAprobado = '';
     $('filas-pila').replaceChildren(); $('estado-pila').textContent = 'Pulsa «Preparar comprobación» cuando tengas tu Código P.';
     $('verificar-pila').disabled = true; $('revelar-pila').disabled = true;
     tallerNPI.cargar(paquete.versiones.npi.etapas);
@@ -200,7 +241,10 @@ function validar() {
     const guardado = guardarIntento(`${paquete.fuente.tipo}:${representacion}`, resultado, { pistas: pistasMostradas, solucionVista });
     if (!guardado) $('mensaje-progreso').textContent = 'El navegador impidió guardar el progreso local.';
     progresoGlobal(); progresoPaquete();
-    if (resultado.correcto) celebrar();
+    if (resultado.correcto) {
+        if (representacion === 'codigoP') codigoPAprobado = respuesta;
+        celebrar();
+    }
 }
 function darPista() {
     const pistas = ejercicio.pistas;
@@ -320,6 +364,21 @@ $('fuente-fija-toggle').addEventListener('click', () => {
 $('tipo').addEventListener('change', cargarEjercicio);
 $('nuevo').addEventListener('click', cargarEjercicio);
 for (const boton of botonesTabs) boton.addEventListener('click', () => cambiarRepresentacion(boton.dataset.representacion));
+$('continuar').addEventListener('click', () => {
+    if (!resultadosPorTab[representacion]?.correcto) return;
+    const pos = ORDEN_ETAPAS.indexOf(representacion);
+    if (pos === ORDEN_ETAPAS.length - 1) cargarEjercicio();
+    else cambiarRepresentacion(ORDEN_ETAPAS[pos + 1]);
+    // No hace falta volver al selector de ejercicios: llevar el editor a la zona visible
+    // situada justo debajo del panel de referencia fija.
+    requestAnimationFrame(() => {
+        const seccion = document.querySelector('.representaciones');
+        const margen = $('fuente-fija').getBoundingClientRect().height + 18;
+        const distancia = window.scrollY + seccion.getBoundingClientRect().top - margen;
+        const suave = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: Math.max(0, distancia), behavior: suave ? 'smooth' : 'instant' });
+    });
+});
 $('validar').addEventListener('click', validar);
 $('pista').addEventListener('click', darPista);
 $('solucion').addEventListener('click', alternarSolucion);

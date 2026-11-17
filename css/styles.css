@@ -183,3 +183,36 @@ body { background: radial-gradient(ellipse at 75% 0%, #102b45 0%, transparent 42
 .npi-nodo:not(.pendiente):active{cursor:grabbing}
 
 .npi-casilla.npi-agotada .npi-ficha:hover{transform:none;background:transparent}
+
+/* v0.9.0 — avance secuencial y referencia al Código P aprobado. */
+.pestana.bloqueada,.pestana:disabled{
+  cursor:not-allowed;opacity:.48;background:#0b1c2b;color:#8399b0;
+  border-style:dashed;box-shadow:none;transform:none;filter:none;
+}
+.pestana:disabled:hover{background:#0b1c2b;transform:none}
+.pestana .candado{display:inline-block;margin-right:4px;font-size:12px;vertical-align:baseline}
+.pestana .candado[hidden]{display:none!important}
+.continuar-area{
+  margin-top:24px;padding:18px;border:1px solid #32556d;border-radius:12px;
+  background:linear-gradient(120deg,#0b283a,#11253e);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+}
+.continuar-explicacion{color:#bcd5e7;font-size:13px;line-height:1.5}
+.continuar-boton{flex-shrink:0;min-width:220px;box-shadow:0 5px 20px #0779c22a;transition:filter .2s,transform .2s}
+.continuar-boton:not(:disabled):hover{transform:translateY(-2px)}
+.fuente-fija-detalle{display:block}
+.fuente-fija-detalle.con-codigo-p{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fuente-fija-origen{min-width:0}
+.fuente-fija-origen .fuente-fija-valores{max-width:none;flex-direction:row;align-items:center;flex-wrap:wrap;margin-top:7px}
+.fuente-fija-subtitulo{display:block;color:#a5cde4;font-size:10px;letter-spacing:.7px;font-weight:750;margin-bottom:5px}
+.fuente-fija-referencia-p{min-width:0;border-left:1px solid #2c5d76;padding-left:12px}
+.fuente-fija-referencia-p .fuente-fija-codigo{color:#a5f6c4;max-height:150px;overflow-y:auto;overflow-x:auto}
+@media(max-width:740px){
+ .continuar-area{flex-direction:column;align-items:stretch}
+ .continuar-boton{width:100%;min-width:0}
+ .fuente-fija-detalle.con-codigo-p{gap:8px}
+ .fuente-fija-referencia-p{padding-left:8px}
+ .fuente-fija-subtitulo{font-size:9px}
+ .fuente-fija-codigo{font-size:10px}
+ .fuente-fija-referencia-p .fuente-fija-codigo{max-height:117px}
+}
