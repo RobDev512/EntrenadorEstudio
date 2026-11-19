@@ -284,7 +284,7 @@ body { background: radial-gradient(ellipse at 75% 0%, #102b45 0%, transparent 42
   .sidebar-final{display:none}
 }
 
-/* v1.0.0-rc.3 · Créditos, catálogo de unidades y reloj local */
+/* v1.0.0-rc.5 · Créditos, catálogo de unidades y reloj local */
 .catalogo-materias .menu-semestre-contador{min-width:auto;white-space:nowrap;font-size:9px;padding:3px 7px}
 .menu-materia-clave{font-size:10px;line-height:1.45;color:#89a7be}
 .resumen-creditos{margin:15px 0 6px;padding:12px 13px;border:1px solid #28536e;background:linear-gradient(140deg,#112c40,#0b2232);border-radius:12px}
@@ -297,17 +297,23 @@ body { background: radial-gradient(ellipse at 75% 0%, #102b45 0%, transparent 42
 .reloj-panel{margin:13px 0 0;padding:12px 13px 10px;background:linear-gradient(130deg,#10283e,#0b2233);border:1px solid #234c66;border-radius:12px;box-shadow:inset 0 1px 0 #31567533}
 .reloj-cabecera{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .reloj-cabecera>span{font-size:10px;font-weight:750;letter-spacing:1px;color:#91bacd}
-.reloj-cambiar{background:#17394c;border:1px solid #32617a;border-radius:7px;color:#74e4f3;padding:5px 8px;font-size:10px;font-weight:650;white-space:nowrap}
+.reloj-cambiar{display:grid;place-items:center;width:34px;height:34px;background:#17394c;border:1px solid #32617a;border-radius:10px;color:#74e4f3;padding:0}
 .reloj-cambiar:hover,.reloj-cambiar:focus-visible{background:#21536c;outline-offset:2px}
+.icono-reloj{position:relative;display:block;width:18px;height:18px}
+.icono-reloj.icono-analogico{background:linear-gradient(#82edf8,#82edf8) center 28%/2px 6px no-repeat,linear-gradient(#82edf8,#82edf8) 65% 50%/5px 2px no-repeat}
+.icono-reloj.icono-analogico::before{content:"";position:absolute;inset:0;border:2px solid #82edf8;border-radius:50%;box-shadow:inset 0 0 0 1px #0c2b3b}
+.icono-reloj.icono-digital{border:2px solid #82edf8;border-radius:4px;width:18px;height:14px;margin-top:2px}
+.icono-reloj.icono-digital::before{content:"12";position:absolute;inset:0;display:grid;place-items:center;color:#82edf8;font:700 8px/1 Consolas,monospace;letter-spacing:.2px}
 .reloj-digital{margin:5px 0 0;display:block}
 .reloj-digital time{font:700 clamp(24px,2.1vw,29px)/1.35 Consolas,'Segoe UI',monospace;letter-spacing:1.2px;font-variant-numeric:tabular-nums;color:#f2fdff}
 .reloj-fecha{margin-top:3px;font-size:10px;color:#a2c4da;text-transform:capitalize}
 .reloj-analogico{display:flex;justify-content:center;padding:9px 0 5px}
 .reloj-analogico[hidden],.reloj-digital[hidden]{display:none!important}
-.reloj-esfera{position:relative;width:100px;height:100px;border:3px solid #4cd4e4;border-radius:50%;background:radial-gradient(circle,#174055,#0a2034);box-shadow:0 0 15px #11b5e233,inset 0 0 12px #14354d}
-.reloj-num{position:absolute;color:#a6edfa;font:700 10px/1 'Segoe UI',sans-serif}
-.reloj-12{top:6px;left:50%;transform:translateX(-50%)}.reloj-6{bottom:6px;left:50%;transform:translateX(-50%)}.reloj-3{right:7px;top:50%;transform:translateY(-50%)}.reloj-9{left:7px;top:50%;transform:translateY(-50%)}
+.reloj-esfera{position:relative;width:112px;height:112px;border:3px solid #4cd4e4;border-radius:50%;background:radial-gradient(circle,#174055,#0a2034);box-shadow:0 0 15px #11b5e233,inset 0 0 12px #14354d}
+.reloj-num{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:18px;height:18px;margin:-9px 0 0 -9px;color:#a6edfa;font:700 10px/1 'Segoe UI',sans-serif;text-shadow:0 0 6px #0a2034}
+.reloj-marca{position:absolute;width:2px;height:6px;background:#5ea0bd;border-radius:3px;opacity:.9}
+.reloj-marca.principal{height:10px;background:#a6edfa}
 .reloj-manecilla{position:absolute;left:50%;bottom:50%;transform-origin:center bottom;transform:translateX(-50%);border-radius:6px}
-.reloj-h{height:26px;width:5px;background:#edfaff}.reloj-m{height:37px;width:3px;background:#59def3}.reloj-s{height:41px;width:1.5px;background:#f6b86d}
+.reloj-h{height:28px;width:5px;background:#edfaff}.reloj-m{height:40px;width:3px;background:#59def3}.reloj-s{height:45px;width:1.5px;background:#f6b86d}
 .reloj-centro{position:absolute;left:50%;top:50%;width:9px;height:9px;border:2px solid #16425a;background:#f6c779;border-radius:50%;transform:translate(-50%,-50%)}
-@media(max-width:650px){.reloj-panel{padding:9px 12px}.reloj-esfera{width:90px;height:90px}.reloj-digital time{font-size:25px}.resumen-creditos{margin:10px 0 2px}}
+@media(max-width:650px){.reloj-panel{padding:9px 12px}.reloj-esfera{width:98px;height:98px}.reloj-num{font-size:9px;width:16px;height:16px;margin:-8px 0 0 -8px}.reloj-digital time{font-size:25px}.resumen-creditos{margin:10px 0 2px}}

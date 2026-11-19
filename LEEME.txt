@@ -1,4 +1,4 @@
-ETRIVA v1.0.0-rc.3 — VISTA PREVIA DE IDENTIDAD Y CATÁLOGO ISC
+ETRIVA v1.0.0-rc.5 — VISTA PREVIA DE IDENTIDAD Y CATÁLOGO ISC
 ==================================================================
 
 Esta es una versión de prueba basada en EntrenadorEstudio v0.9.1.

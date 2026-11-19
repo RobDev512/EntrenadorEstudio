@@ -30,7 +30,7 @@ HTML5, CSS3, JavaScript (módulos ES) y almacenamiento local. **Sin React, sin b
 
 ## Versión
 
-**v1.0.0-rc.3 (preparación)** — Flujo secuencial de las cuatro representaciones, referencia del Código P aprobado al resolver triplos y de los triplos aprobados al resolver cuádruplos; logotipo e iconos propios. Conserva el taller de árboles, postorden con comas y la comprobación de pila.
+**v1.0.0-rc.5 (preparación)** — Flujo secuencial de las cuatro representaciones, referencia del Código P aprobado al resolver triplos y de los triplos aprobados al resolver cuádruplos; logotipo e iconos propios. Conserva el taller de árboles, postorden con comas y la comprobación de pila.
 
 ## Ruta de práctica
 
