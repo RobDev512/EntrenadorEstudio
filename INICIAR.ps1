@@ -1,4 +1,4 @@
-# EntrenadorEstudio - Iniciador de servidor local para Windows PowerShell.
+# Etriva - Iniciador de servidor local para Windows PowerShell.
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $PSScriptRoot
 $puerto = 8765
@@ -20,7 +20,7 @@ if ($comando) {
     }
 }
 
-Write-Host 'Iniciando EntrenadorEstudio...' -ForegroundColor Cyan
+Write-Host 'Iniciando Etriva...' -ForegroundColor Cyan
 $proceso = Start-Process -FilePath $ejecutable -ArgumentList $argumentos -WorkingDirectory $PSScriptRoot -PassThru -WindowStyle Hidden
 try {
     Start-Sleep -Seconds 2

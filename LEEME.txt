@@ -1,23 +1,19 @@
-ENTRENADORESTUDIO v0.9.1 — Lenguajes y Autómatas II / Unidad 2
+ETRIVA v1.0.0-rc.3 — VISTA PREVIA DE IDENTIDAD Y CATÁLOGO ISC
 ==================================================================
 
-USO EN WINDOWS
-1. Extrae el proyecto en cualquier carpeta de tu equipo.
-2. Ejecuta INICIAR.bat. Requiere Python 3 instalado.
-3. Abre http://127.0.0.1:8765/ y usa Ctrl + Shift + R si ves una versión anterior.
-4. Como alternativa, puedes abrir index.html con Live Server en VS Code.
+Esta es una versión de prueba basada en EntrenadorEstudio v0.9.1.
+Nuevo nombre propuesto: Etriva (conservando el logotipo existente).
+Catálogo: 9 semestres / 51 materias, basado en el PDF aportado.
+Solo se puede practicar Lenguajes y Autómatas II, Unidad 2.
+Las materias sin temario confirmado muestran "Unidades por incorporar".
 
-NOVEDADES v0.9.1
-- Avance obligatorio en orden: NPI > Código P > Triplos > Cuádruplos.
-- La siguiente etapa se desbloquea cuando la anterior se valida correctamente.
-- En Triplos/Cuádruplos, tu Código P aprobado acompaña al código fuente fijo.
-- Botón Continuar al final de cada sección, y Nuevo ejercicio al completar todo.
-- Se conservan árboles, arrastre de fichas, postorden con comas, pila y progreso local.
+INSTALACIÓN EN WINDOWS
+1. Extrae la carpeta EntrenadorEstudio incluida en el ZIP (el nombre técnico de carpeta permanece por compatibilidad).
+2. Ejecuta INICIAR.bat; necesitas Python 3 instalado.
+3. Abre http://127.0.0.1:8765/ y presiona Ctrl+Shift+R si ves caché anterior.
+4. Alternativa: abre index.html con Live Server de VS Code.
 
-IMPORTANTE
-- En if/else, while, for y do/while, NPI se practica por árbol de condición o asignación.
-- Los saltos se comprueban en Código P, triplos y cuádruplos.
-- El progreso se guarda por navegador, no se sincroniza entre equipos.
-- Consulta README.md para instrucciones completas y límites del simulador.
+Tu progreso anterior se conserva si abres la nueva versión desde el mismo origen del navegador.
+No se publican automáticamente cambios en GitHub; revisa esta vista previa antes.
 
-NUEVO v0.9.1: En Cuadruplos, la referencia fija muestra tus Triplos aprobados junto al codigo fuente. Logo propio en la barra lateral y favicon de la pestaña.
+RC3: Creditos por asignatura y semestre (260 total), temarios con numero de unidades, y reloj en tiempo real digital/analogico.

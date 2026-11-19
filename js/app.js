@@ -1,3 +1,4 @@
+import { montarMenuMaterias } from './menu-materias.js';
 import { crearEjercicio } from './generador.js';
 import { validarRespuesta, obtenerTraza } from './validadores.js';
 import { crearPaquete, REPRESENTACIONES } from './codigo-unificado.js';
@@ -406,7 +407,7 @@ $('editor-tabla').addEventListener('keydown', e => {
     if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); validar(); }
 });
 $('exportar').addEventListener('click', () => {
-    descargar(exportarProgreso(), 'EntrenadorEstudio_progreso.json');
+    descargar(exportarProgreso(), 'Etriva_progreso.json');
     $('mensaje-progreso').textContent = 'Progreso exportado a JSON.';
 });
 $('importar').addEventListener('change', async e => {
@@ -417,3 +418,5 @@ $('importar').addEventListener('change', async e => {
 });
 
 progresoGlobal(); cargarEjercicio();
+
+montarMenuMaterias();

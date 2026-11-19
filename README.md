@@ -1,4 +1,4 @@
-# EntrenadorEstudio · Lenguajes y Autómatas II — Unidad 2
+# Etriva · Plataforma de práctica académica (nombre propuesto)
 
 Aplicación web gratuita de práctica para estudiantes de **Lenguajes y Autómatas II**, centrada en la **generación de código intermedio**. Un mismo código fuente puede trabajarse mediante varias representaciones y comprobaciones.
 
@@ -14,7 +14,7 @@ Aplicación web gratuita de práctica para estudiantes de **Lenguajes y Autómat
 
 ## Cómo usarlo
 
-**Opción 1 — En línea:** abre [EntrenadorEstudio en GitHub Pages](https://robdev512.github.io/EntrenadorEstudio/). No necesitas instalar nada.
+**Opción 1 — En línea:** abre [Etriva (antes EntrenadorEstudio) en GitHub Pages](https://robdev512.github.io/EntrenadorEstudio/). No necesitas instalar nada.
 
 **Opción 2 — En Windows:** descarga el repositorio, extrae la carpeta y ejecuta `INICIAR.bat`. Requiere Python 3 instalado para iniciar un servidor HTTP local. Como alternativa, abre `index.html` con la extensión Live Server de VS Code.
 
@@ -30,7 +30,7 @@ HTML5, CSS3, JavaScript (módulos ES) y almacenamiento local. **Sin React, sin b
 
 ## Versión
 
-**v0.9.1** — Flujo secuencial de las cuatro representaciones, referencia del Código P aprobado al resolver triplos y de los triplos aprobados al resolver cuádruplos; logotipo e iconos propios. Conserva el taller de árboles, postorden con comas y la comprobación de pila.
+**v1.0.0-rc.3 (preparación)** — Flujo secuencial de las cuatro representaciones, referencia del Código P aprobado al resolver triplos y de los triplos aprobados al resolver cuádruplos; logotipo e iconos propios. Conserva el taller de árboles, postorden con comas y la comprobación de pila.
 
 ## Ruta de práctica
 
@@ -41,3 +41,23 @@ En **Triplos**, la referencia fija muestra el código fuente junto con **tu Cód
 ## Aviso académico
 
 Esta herramienta es un apoyo de práctica y puede contener limitaciones o errores; contrasta resultados con las convenciones de tu curso. No es una evaluación oficial.
+
+## Catálogo académico (vista previa v1.0)
+
+La navegación se organiza como **semestre → materia → unidad** a partir del PDF «Competencias previas ISC + Desarrollo Full Stack» proporcionado para el Tec de Tepic: **9 semestres y 51 asignaturas**. La lista corresponde al documento aportado, no necesariamente a otros planes o generaciones.
+
+Por ahora **solo Lenguajes y Autómatas II (semestre 7), Unidad 2** tiene actividades activas. Sus unidades 1, 3 y 4 están deshabilitadas. En las otras materias se muestra «Unidades por incorporar» porque el documento no contiene sus temarios ni el número exacto de unidades. Se pueden expandir y buscar materias, pero no entrar a ejercicios inexistentes.
+
+**Compatibilidad:** mantenemos la clave `entrenador-estudio-progreso-v1` y la ruta del repositorio anterior para preservar los progresos en ese mismo navegador y dominio. Cambiar el nombre visible no altera el historial. Si en el futuro se renombra el repositorio o se cambia el dominio, habrá que exportar/importar el progreso, pues `localStorage` depende del origen.
+
+**Identidad:** «Etriva» es un nombre provisional para esta vista previa; conserva el logotipo con letra E que ya tenía el proyecto. No se ha comprobado disponibilidad de marca o nombre comercial.
+
+## Catálogo curricular y reloj (RC3)
+
+La navegación despliega los nueve semestres y las **51 asignaturas** con sus créditos y el número de unidades de su programa oficial. Las unidades son informativas y permanecen desactivadas salvo **Lenguajes y Autómatas II, Unidad 2**.
+
+La suma distingue **235 créditos de las asignaturas**, más **10 de residencia profesional, 10 de servicio social y 5 de actividades complementarias**, para un total de **260 créditos del plan**. No representa los créditos obtenidos por ningún estudiante.
+
+El reloj digital/analógico refleja la hora local del dispositivo y guarda su presentación preferida en `localStorage`; no necesita internet ni acceso a la ubicación.
+
+**Fuentes:** [plan de estudios del Instituto Tecnológico de Tepic](https://www.tepic.tecnm.mx/ofertaeducativa/licenciatura/ingenieria-en-sistemas-computacionales), programas oficiales de cada materia accesibles desde el portal; para el temario de Administración de Redes se contrastó el [documento SCA-1002 del TecNM](https://tlahuac.tecnm.mx/PDFs/sistemascompetencias/8_SCA-1002.pdf). Las claves se conservaron según el archivo de competencias previas compartido por el usuario y pueden variar respecto de las publicadas en el portal actual.

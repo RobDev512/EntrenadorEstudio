@@ -1,7 +1,7 @@
 {
-  "name": "entrenadorestudio",
+  "name": "etriva",
   "private": true,
-  "version": "0.9.1",
+  "version": "1.0.0-rc.3",
   "type": "module",
-  "description": "Entrenador con taller interactivo de árboles, NPI, Código P y comprobación de pila"
+  "description": "Plataforma de práctica con catálogo ISC organizado por semestre, materia y unidad"
 }
