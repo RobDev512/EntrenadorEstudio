@@ -1,7 +1,7 @@
 {
   "name": "etriva",
   "private": true,
-  "version": "1.0.0-rc.5",
+  "version": "1.0.0-rc.6",
   "type": "module",
   "description": "Plataforma de práctica con catálogo ISC organizado por semestre, materia y unidad"
 }
